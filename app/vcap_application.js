@@ -10,7 +10,7 @@ module.exports = {
   get_app_uris: function () {
     if ( process.env.VCAP_APPLICATION) {
       var app_info = JSON.parse( process.env.VCAP_APPLICATION)
-      return app_info.uris
+      return app_info.uris.join(', ')
     }
   },
 
