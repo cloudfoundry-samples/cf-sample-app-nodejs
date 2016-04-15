@@ -1,0 +1,97 @@
+ul.list-group
+  // buildpack
+  li.list-group-item.pln
+    .row.man
+      .col-xs-3.col-sm-3.col-md-3.col-lg-3.phxl
+        span.h1.pan.man.icon-nodejs.type-neutral-5(style='top: 4px; left: 2px; position: relative;')
+      .col-xs-12.col-sm-15.col-md-15.col-lg-15
+        .type-neutral-4.small
+          div BUILDPACK
+        .type-ellipsis
+          | Node.js
+      .col-xs-9.col-sm-6.col-md-6.col-lg-6.ptl.txt-r.type-ellipsis
+        a.type-accent-4(href='https://docs.cloudfoundry.org/buildpacks/', target='_blank')
+          span.small Buildpacks
+          span.fa.fa-icon.fa-external-link.plm.txt-m.small
+  // app
+  li.list-group-item.pln
+    .row.man
+      .col-xs-3.col-sm-3.col-md-3.col-lg-3.phxl
+        span.h1.pan.man.fa.fa-icon.fa-play-circle.type-neutral-5(style='left: 0px; position: relative;')
+      .col-xs-5.col-sm-5.col-md-5.col-lg-5
+        .type-neutral-4.small
+          .type-ellipsis APP NAME
+        .type-ellipsis #{ application_name || '@application_name'}
+      .col-xs-5.col-sm-5.col-md-10.col-lg-10
+        .type-neutral-4.small
+          .type-ellipsis APP URIS
+        .type-ellipsis #{ app_uris || '@app_uris'}
+      .col-xs-11.col-sm-11.col-md-6.col-lg-6.ptl.txt-r.type-ellipsis
+        a.type-accent-4(href='https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html', target='_blank')
+          span.small Routes & Domains
+          span.fa.fa-icon.fa-external-link.plm.txt-m.small
+  // limits
+  li.list-group-item.pln
+    .row.man
+      .col-xs-3.col-sm-3.col-md-3.col-lg-3.phxl
+        span.h1.pan.man.fa.fa-icon.fa-dashboard.type-neutral-5(style='left: -2px; position: relative;')
+      .col-xs-5.col-sm-5.col-md-5.col-lg-5
+        .type-neutral-4.small
+          .type-ellipsis INSTANCE INDEX
+        .type-ellipsis #{ app_index || '@app_instance_index'}
+      .col-xs-5.col-sm-5.col-md-5.col-lg-5
+        .type-neutral-4.small
+          .type-ellipsis MEMORY LIMIT
+        .type-ellipsis #{ app_mem_limits != undefined ? app_mem_limits + 'M' : '@application_mem_limits'}
+      .col-xs-5.col-sm-5.col-md-5.col-lg-5
+        .type-neutral-4.small
+          .type-ellipsis DISK LIMIT
+        .type-ellipsis #{ app_disk_limits!= undefined ? app_disk_limits + 'M' : '@application_disk_limits'}
+      .col-xs-6.col-sm-6.col-md-6.col-lg-6.ptl.txt-r.type-ellipsis
+        a.type-accent-4(href='https://docs.cloudfoundry.org/devguide/deploy-apps/cf-scale.html', target='_blank')
+          span.small Scaling
+          span.fa.fa-icon.fa-external-link.plm.txt-m.small
+  // space
+  li.list-group-item.pln
+    .row.man
+      .col-xs-3.col-sm-3.col-md-3.col-lg-3.phxl
+        span.h1.pan.man.fa.fa-icon.fa-bullseye.type-neutral-5(style='left: 0px; position: relative;')
+      .col-xs-12.col-sm-15.col-md-15.col-lg-15
+        .type-neutral-4.small
+          span.type-ellipsis SPACE NAME
+        .type-ellipsis #{ app_space_name || '@app_space_name'}
+      .col-xs-9.col-sm-6.col-md-6.col-lg-6.ptl.txt-r.type-ellipsis
+        a.type-accent-4(href='https://docs.cloudfoundry.org/concepts/roles.html', target='_blank')
+          span.small.txt-m Orgs & Spaces
+          span.fa.fa-icon.fa-external-link.plm.txt-m.small
+  // services
+  li.list-group-item.pln
+    .row.man
+      .col-xs-3.col-sm-3.col-md-3.col-lg-3.phxl
+        span.h1.pan.man.fa.fa-icon.fa-database.type-neutral-5(style='left: 0px; position: relative;')
+      if !process.env.VCAP_SERVICES || process.env.VCAP_SERVICES == "{}"
+        // no service bound to the app
+        .col-xs-12.col-sm-15.col-md-15.col-lg-15
+          .ptl.type-ellipsis There aren't any services bound to this app.
+        .col-xs-9.col-sm-6.col-md-6.col-lg-6.ptl.txt-r.type-ellipsis
+          a.type-accent-4(href='https://docs.cloudfoundry.org/devguide/services/managing-services.html', target='_blank')
+            span.small Manage Services
+            span.fa.fa-icon.fa-external-link.plm.txt-m.small
+      else
+        // service bound to the app
+        .col-xs-5.col-sm-5.col-md-5.col-lg-5
+          .type-neutral-4.small
+            .type-ellipsis SERVICE
+          .type-ellipsis #{ service_label || '@service_label'}
+        .col-xs-5.col-sm-5.col-md-5.col-lg-5
+          .type-neutral-4.small
+            .type-ellipsis SERVICE NAME
+          .type-ellipsis #{ service_name || '@service_name'}
+        .col-xs-5.col-sm-5.col-md-5.col-lg-5
+          .type-neutral-4.small
+            .type-ellipsis SERVICE PLAN
+          .type-ellipsis #{ service_plan || '@service_plan'}
+        .col-xs-6.col-sm-6.col-md-6.col-lg-6.ptl.txt-r.type-ellipsis
+          a.type-accent-4(href='https://docs.cloudfoundry.org/buildpacks/node/node-service-bindings.html', target='_blank')
+            span.small Configuring Services
+            span.fa.fa-icon.fa-external-link.plm.txt-m.small
