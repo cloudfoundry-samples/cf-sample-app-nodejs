@@ -22,8 +22,8 @@ module.exports = {
   },
 
   get_app_index: function () {
-    if ( process.env.INSTANCE_INDEX) {
-      var app_index = process.env.INSTANCE_INDEX
+    if ( process.env.CF_INSTANCE_INDEX) {
+      var app_index = process.env.CF_INSTANCE_INDEX
       return app_index
     }
   },
