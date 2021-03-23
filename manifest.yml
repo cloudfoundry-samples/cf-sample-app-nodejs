@@ -4,3 +4,4 @@ applications:
   memory: 512M
   instances: 1
   random-route: true
+  host: myhost03091993
