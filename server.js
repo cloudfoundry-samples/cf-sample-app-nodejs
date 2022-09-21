@@ -4,7 +4,7 @@ var cf_app = require( './app/vcap_application')
 var cf_svc = require( './app/vcap_services')
 
 app.set( 'views', __dirname + '/views')
-app.set( 'view engine', 'jade')
+app.set( 'view engine', 'pug')
 app.use( express.static( __dirname + '/public'))
 
 app.get( '/', function ( req, res) {
